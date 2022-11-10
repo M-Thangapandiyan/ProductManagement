@@ -8,17 +8,19 @@
 </head>
 <body>
 	<form method = "post" action="InsertDealer">
+		<div>
+			<td><label for ="Company" >Company</label></td>
+			<td><input type="text" name="company" id = "Company"></td><br>
+		</div><br>
+		
 		<tr>
-			<td>Company</td>
-			<td><input type="text" name="company"></td>
-		</tr>
-		<tr>
-			<td>Location</td>
-			<td><input type="text" name="location"></td>
-		</tr>
-		<tr>
+			<td><label for ="Location" >Location</label></td>
+			<td><input type="text" name="location" id = "Location"></td><br>
+		</tr><br>
+		
+		<div>
 			<td><button type="submit">Submit</td>
-		</tr>
+		</div>
 	</form>
 </body>
 </html>

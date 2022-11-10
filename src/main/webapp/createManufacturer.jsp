@@ -10,12 +10,12 @@
 	<form method="post" action="InsertManufacturer">
 	<table>
 		<tr>
-			<td>Brand</td>
-			<td><input type="text" name="brand"></td>
+			<td><label for = "Brand">Brand</label></td>
+			<td><input type="text" name="brand" id = "Brand"></td>
 		</tr>
 		<tr>
-			<td>Place</td>
-			<td><input type="text" name="place"></td>
+			<td><label for = "Place">Place</label></td>
+			<td><input type="text" name="place" id ="Place"></td>
 		</tr>
 		<tr>
 			<td><button type="submit">Submit</td>

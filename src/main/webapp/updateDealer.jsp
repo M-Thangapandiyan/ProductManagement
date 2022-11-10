@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form method="get" action="getDealer">
-		Enter the update dealer id: <input type="number" name="id">
+		<input type="number" name="id" placeholder= "Enter the update dealer id: ">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>

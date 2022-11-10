@@ -28,8 +28,8 @@ id = Integer.parseInt(request.getParameter("id"));
 		%>
 		<table>
 			<tr>
-				Enter the productId:
-				<input type= "number" name="id-<%= index + 1 %>">
+				
+				<input type= "number" name="id-<%= index + 1 %>" placeholder = "Enter the productId:">
 			</tr>
 		</table>
 		<%

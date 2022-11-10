@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form method="get" action="getProduct">
-		Enter the update product id: <input type="number" name="id">
+		<input type="number" name="id" placeholder = "Enter the update product id:">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>

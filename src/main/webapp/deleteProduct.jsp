@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form method="post" action="deleteProduct">
-		Enter the productId: <input type="number" name="id">
+		<input type="number" name="id" placeholder = "Enter the productId:">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>

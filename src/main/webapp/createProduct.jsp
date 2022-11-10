@@ -31,25 +31,29 @@ Dealer dealer = null; %>
 	<form method="get" action="assignDealer"></form>
 	<form method="post" action="InsertProduct">
 		<table>
+		
 			<div class = "myDiver">
-				<td>Name</td>
-				<td><input type="text" name="name"></td>
+
+				<td> <label for ="Name" >Name</label></td>
+				<td><input type="text" name="name" id="Name"></td>
 			</div>
+			
 			<tr>
-				<td>Price</td>
-				<td><input type="number" name="Price"></td>
+				<td><label for = "price">Price</label></td>
+				<td><input type="number" name="Price" id = "price"></td>
 			</tr>
+			
 			<tr>
-				<td>DOB</td>
-				<td><input type="date" name="dob"></td>
+				<td><label for = "DOB">Date Of Birth</label></td>
+				<td><input type="date" name="dob" id = "DOB"></td>
 			</tr>
 			<tr>
 				<td>Color</td>
 				<td>
 				<input type="radio" name="colour" value="RED" id = "red"><label for = "red">RED</label>
-				<input type="radio" name="colour" value="BLUE" id = "blue"><label for = "blue">RED</label>
-				<input type="radio" name="colour" value="GREEN" id = "green"><label for = "green">RED</label>
-				<input type="radio" name="colour" value="YELLOW" id = "yellow"><label for = "yellow">RED</label>
+				<input type="radio" name="colour" value="BLUE" id = "blue"><label for = "blue">BLUE</label>
+				<input type="radio" name="colour" value="GREEN" id = "green"><label for = "green">GREEN</label>
+				<input type="radio" name="colour" value="YELLOW" id = "yellow"><label for = "yellow">YELLOW</label>
 			</tr>
 			<tr>
 				<td><a href="assignManufacturer"><input type="button"
@@ -112,15 +116,15 @@ Dealer dealer = null; %>
 		</table>
 	</form>
 	
-	<div>
-  <h2>Created Product</h2>
-
+	<div class = "myDiv">
+ 
 	<%
 	Product product = (Product) session.getAttribute("product");
 	%>
 	<%
 	if (null != product) {
 	%>
+	<h2>Created Product</h2>
 	<table>
 		<tr>
 			<td>id</td>

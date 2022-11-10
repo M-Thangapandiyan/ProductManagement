@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="get" action="getProductByIds.jsp">
+<form method="get" action="getProduct.jsp">
 		choices: <input type="number" name="id">
 		<table>
 			<tr>
