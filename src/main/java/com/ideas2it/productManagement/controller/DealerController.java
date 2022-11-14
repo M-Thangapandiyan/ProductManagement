@@ -83,7 +83,7 @@ public class DealerController {
                 int value = scanner.nextInt();
                 switch(value) {
                     case 1:
-                        createDealer();
+                     //   createDealer();
                         break;
                     case 2:
                         displayDealer();
@@ -129,16 +129,15 @@ public class DealerController {
     /**
      * Used to get the input details for create the dealer 
      */ 
-    public void createDealer() {
-        try {
-            String company = getCompany();
-            String location = getLocation();
-            Dealer dealer = dealerService.createDealer(company, location);
-            System.out.println(dealer.getCompany() + " company inserted");  
-        } catch(ProductManagementException productManagementException) {
-            ProductManagementLogger.loggerError(productManagementException.getMessage());
-        }
-    }
+	/*
+	 * public void createDealer() { try { String company = getCompany(); String
+	 * location = getLocation(); // Dealer dealer =
+	 * dealerService.createDealer(company, location);
+	 * System.out.println(dealer.getCompany() + " company inserted"); }
+	 * catch(ProductManagementException productManagementException) {
+	 * ProductManagementLogger.loggerError(productManagementException.getMessage());
+	 * } }
+	 */
     
     /**
      * Used to get the validated company from the user

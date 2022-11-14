@@ -11,7 +11,7 @@
 </head>
 <body>
 	<form method="post" action="getDealer">
-		<input type="number" name="id" placeholder = "Enter the dealerId: ">
+		Enter the dealerId: <input type="number" name="id">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>

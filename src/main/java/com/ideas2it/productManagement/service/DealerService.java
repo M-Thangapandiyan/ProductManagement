@@ -13,7 +13,7 @@ public interface DealerService{
     /**
      * This method used for create dealer
      */
-    public Dealer createDealer(String company, String location) throws ProductManagementException;
+    public Dealer createDealer(Dealer dealer) throws ProductManagementException;
 
     /**
      * Used to remove the dealer details by using the id 

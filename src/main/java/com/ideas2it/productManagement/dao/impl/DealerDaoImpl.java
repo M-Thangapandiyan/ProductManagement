@@ -86,16 +86,22 @@ public class DealerDaoImpl implements DealerDao {
 			sessionFactory = DataBaseConnection.getInstance();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
-			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaUpdate<Dealer> criteriaUpdate = builder.createCriteriaUpdate(Dealer.class);
-			Root<Dealer> root = criteriaUpdate.from(Dealer.class);
-			criteriaUpdate.set("isDeleted",id).where(root.get("id").in(id));
-			int row = session.createQuery(criteriaUpdate).executeUpdate();
+			Query query = session.createQuery("update Dealer set isDeleted = 1 where id= :id");
+			query.setParameter("id", id);
+			int row = query.executeUpdate();
+			transaction.commit();
 			return row == 1;
-			} catch (Exception sqlException) {
+		} catch (Exception sqlException) {
+			transaction.rollback();
 			throw new ProductManagementException(sqlException.getMessage());
 		} finally {
-			session.close();
+			try {
+				if (null != session) {
+					session.close();
+				}
+			} catch (Exception exception) {
+				ProductManagementLogger.loggerError(exception);
+			}
 		}
 	}
 

@@ -1,26 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form method = "post" action="InsertDealer">
-		<div>
-			<td><label for ="Company" >Company</label></td>
-			<td><input type="text" name="company" id = "Company"></td><br>
-		</div><br>
-		
+	<form:form method = "post" action="InsertDealer" modelAttribute ="references">
+		<table>
 		<tr>
-			<td><label for ="Location" >Location</label></td>
-			<td><input type="text" name="location" id = "Location"></td><br>
-		</tr><br>
-		
-		<div>
-			<td><button type="submit">Submit</td>
-		</div>
-	</form>
+			<td>Company</td>
+			<td><form:input type="text" path="company"/></td>
+		</tr>
+		<tr>
+			<td>Location</td>
+			<td><form:input type="text" path="location"/></td>
+		</tr>
+		<tr>
+			<td><button type="submit">Submit</button></td>
+		</tr>
+		</table>
+	${reference}
+	</form:form>
 </body>
 </html>

@@ -10,7 +10,7 @@
 </head>
 <body>
 <form method="get" action="searchProduct">
-		 <input type="text" name="name" placeholder = "Enter the product name:"><br>
+		Enter the product name: <input type="text" name="name">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>

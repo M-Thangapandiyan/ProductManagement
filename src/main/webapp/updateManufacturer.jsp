@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form method="get" action="getManufacturer">
-		<input type="number" name="id" placeholder = "Enter the update manufacturer id: ">
+		Enter the update manufacturer id: <input type="number" name="id">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>

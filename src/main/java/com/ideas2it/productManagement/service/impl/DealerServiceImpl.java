@@ -14,8 +14,7 @@ public class DealerServiceImpl implements DealerService {
     /**
      * {@inherticDoc}
      */
-    public Dealer createDealer(String company, String location) throws ProductManagementException {
-        Dealer dealer = new Dealer(company, location);
+    public Dealer createDealer(Dealer dealer) throws ProductManagementException {
         return dealerDaoImpl.insertDealer(dealer); 
     }
 

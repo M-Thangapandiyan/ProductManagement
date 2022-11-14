@@ -16,10 +16,8 @@
 			    <li><a href="createProduct.jsp"><button
 							class="btn btn-success btn-sm">Create</button></a><br></li><hr>
 							
-			<form method="get" action="getProducts">
 				    <li><a href="getProducts"><button
 							class="btn btn-success btn-sm">All Products</button></a><br></li><hr>
-			</form>
 			
 				<li><a href="displayProduct.jsp"><button
 							class="btn btn-success btn-sm">Product Details</button></a><br></li><hr>
