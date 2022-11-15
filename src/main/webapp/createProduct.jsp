@@ -47,9 +47,10 @@ Dealer dealer = null; %>
 				<td>Color</td>
 				<td>
 				<input type="radio" name="colour" value="RED" id = "red"><label for = "red">RED</label>
-				<input type="radio" name="colour" value="BLUE" id = "blue"><label for = "blue">RED</label>
-				<input type="radio" name="colour" value="GREEN" id = "green"><label for = "green">RED</label>
-				<input type="radio" name="colour" value="YELLOW" id = "yellow"><label for = "yellow">RED</label>
+				<input type="radio" name="colour" value="BLUE" id = "blue"><label for = "blue">BLUE</label>
+				<input type="radio" name="colour" value="GREEN" id = "green"><label for = "green">GREEN</label>
+				<input type="radio" name="colour" value="YELLOW" id = "yellow"><label for = "yellow">YELLOW</label>
+			</td>			
 			</tr>
 			<tr>
 				<td><a href="assignManufacturer"><input type="button"

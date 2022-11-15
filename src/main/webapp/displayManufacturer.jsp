@@ -14,7 +14,7 @@
 		Enter the manufacturerId: <input type="number" name="id">
 		<table>
 			<tr>
-				<td><button type="submit">Submit</td>
+				<td><button type="submit">Submit</button></td>
 			</tr>
 		</table>
 	</form>

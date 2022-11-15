@@ -10,16 +10,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="getDealer">
-		Enter the dealerId: <input type="number" name="id">
+	<form method="post" action="displayDealer">
+		<input type="number" name="id" placeholder = "Enter the dealerId: ">
 		<table>
 			<tr>
-				<td><button type="submit">Submit</td>
+				<td><button type="submit">Submit</button></td>
 			</tr>
 		</table>
 	</form>
 	<%
-	Dealer dealer = (Dealer) session.getAttribute("dealer");
+	Dealer dealer = (Dealer) request.getAttribute("references");
 	%>
 	<%
 	if (null != dealer) {

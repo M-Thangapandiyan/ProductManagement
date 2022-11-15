@@ -4,7 +4,7 @@
 <html>
 <style>
 .myDiv {
-  border: 5px outset red;
+  border: 3px outset red;
   background-color: lightblue;
   text-align: center;
 }

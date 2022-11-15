@@ -2,14 +2,20 @@ package com.ideas2it.productManagement.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ideas2it.productManagement.dao.DealerDao;
 import com.ideas2it.productManagement.dao.impl.DealerDaoImpl;
 import com.ideas2it.productManagement.model.Dealer;
 import com.ideas2it.productManagement.service.DealerService;
 import com.ideas2it.productManagement.util.exception.ProductManagementException;
 
+@Service
 public class DealerServiceImpl implements DealerService {
-    private DealerDao dealerDaoImpl = new DealerDaoImpl();
+	
+	
+    private DealerDao dealerDaoImpl = new DealerDaoImpl() ;
 
     /**
      * {@inherticDoc}

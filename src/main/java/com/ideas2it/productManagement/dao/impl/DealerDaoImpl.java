@@ -4,18 +4,16 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import com.ideas2it.productManagement.dao.DealerDao;
 import com.ideas2it.productManagement.model.Dealer;
-import com.ideas2it.productManagement.model.Product;
 import com.ideas2it.productManagement.util.Constant;
 import com.ideas2it.productManagement.util.databaseConnection.DataBaseConnection;
 import com.ideas2it.productManagement.util.exception.ProductManagementException;
@@ -28,7 +26,9 @@ import com.ideas2it.productManagement.util.logger.ProductManagementLogger;
  * @author Thangapandiyan
  * @version 1.0
  */
+@Component
 public class DealerDaoImpl implements DealerDao {
+
 	private SessionFactory sessionFactory;
 	Session session = null;
 	Transaction transaction = null;
@@ -37,28 +37,32 @@ public class DealerDaoImpl implements DealerDao {
 	 * {@inherticDoc}
 	 */
 	public Dealer insertDealer(Dealer dealer) throws ProductManagementException {
+		// this.hibernateTemplate.save(dealer);
+		// return dealer;
+
 		try {
 			sessionFactory = DataBaseConnection.getInstance();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			session.save(dealer);
 			transaction.commit();
-			if(0 == dealer.getId()) {
+			if (0 == dealer.getId()) {
 				throw new ProductManagementException(" dealer not inserted");
 			}
 			return dealer;
-		} catch (HibernateException exception) {
+		} catch (Exception exception) {
 			throw new ProductManagementException(exception.getMessage());
 		} finally {
 			session.close();
 		}
+
 	}
 
 	/**
 	 * {@inherticDoc}
 	 */
 	public List<Dealer> retriveDealers() throws ProductManagementException {
-		List<Dealer> dealers ;
+		List<Dealer> dealers;
 		try {
 			sessionFactory = DataBaseConnection.getInstance();
 			session = sessionFactory.openSession();
@@ -111,7 +115,7 @@ public class DealerDaoImpl implements DealerDao {
 	public Dealer updateDealerById(Dealer dealer) throws ProductManagementException {
 		Transaction transaction = null;
 		try {
-			
+
 			sessionFactory = DataBaseConnection.getInstance();
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
@@ -159,7 +163,7 @@ public class DealerDaoImpl implements DealerDao {
 		}
 		return dealer;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

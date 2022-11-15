@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%
-	List<Dealer> dealers = (List<Dealer>) session.getAttribute("dealers");
+	List<Dealer> dealers = (List<Dealer>) request.getAttribute("dealers");
 	%>
 	<%
 	if (null != dealers) {
