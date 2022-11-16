@@ -86,7 +86,15 @@ public class Product extends BaseModel {
         return dateOfManufacture;
     }
    
-    public int getLifeTime(Date dateOfManufacture) {
+    public Date getDateOfManufacture() {
+		return dateOfManufacture;
+	}
+
+	public void setDateOfManufacture(Date dateOfManufacture) {
+		this.dateOfManufacture = dateOfManufacture;
+	}
+
+	public int getLifeTime(Date dateOfManufacture) {
         return DateUtil.find(dateOfManufacture, DateUtil.currentDate);
     }
       

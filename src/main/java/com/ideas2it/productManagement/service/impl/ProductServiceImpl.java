@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	public Product createProduct(Product product) throws ProductManagementException {
-
+        product.setCode(createId());
 		return productDaoImpl.insertProduct(product);
 	}
 

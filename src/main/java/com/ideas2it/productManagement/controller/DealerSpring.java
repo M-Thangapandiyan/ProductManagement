@@ -25,7 +25,7 @@ public class DealerSpring {
 		return "createDealer";
 	}
 
-	@RequestMapping("/InsertDealer")
+	@RequestMapping(value = "/InsertDealer", method = RequestMethod.POST)
 	public String createDealer(@ModelAttribute("references") Dealer dealer, Model model) {
 		try {
 			if (0 != dealer.getId()) {
@@ -41,7 +41,7 @@ public class DealerSpring {
 		return "createDealer";
 	}
 
-	@RequestMapping("/deleteDealer")
+	@RequestMapping( value = "/deleteDealer", method = RequestMethod.POST)
 	public String deleteDealer(@RequestParam(value = "id", required = false) Integer id, Model model) {
 		try {
 			if (null != id) {
@@ -73,7 +73,6 @@ public class DealerSpring {
 			if (null != id) {
 				model.addAttribute("references", new DealerServiceImpl().getDealerById(id));
 			}
-
 		} catch (ProductManagementException e) {
 			e.printStackTrace();
 		}

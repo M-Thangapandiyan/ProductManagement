@@ -8,12 +8,12 @@
 </head>
 <body>
 	<form method="post" action="deleteManufacturer">
-		Enter the productId: <input type="number" name="id">
+	 <input type="number" name="id" placeholder = "Enter the ManufacturerId: ">
 		<table>
 			<tr>
-				<td><button type="submit">Submit</td>
+				<td><button type="submit">Submit</button>></td>
 			</tr>
 		</table>
 	</form>
 </body>
-</html>>
+</html>

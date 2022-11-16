@@ -4,6 +4,9 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <%
@@ -29,28 +32,33 @@ Dealer dealer = null;
 	<h1 class="btn btn-success btn-sm">Create Product</h1>
 </div>
 <body>
-	<form:form method="post" action="InsertProduct">
+	<form:form method="post" action="InsertProduct" modelAttribute="references">
 		<table>
 			<div class="myDiver">
+			
 				<td>Name</td>
-				<td><form:input path="text" id="name" /></td>
+				<td> <form:input type="text" path ="name" /> </td>
 			</div>
+			
 			<tr>
 				<td>Price</td>
-				<td><form:input path="number" id="Price" /></td>
+				<td><form:input type="number" path ="Price" /></td>
 			</tr>
 			<tr>
-				<td>DOB</td>
-				<td><form:input path=date " id="dob" /></td>
+				<td>DateOfBirth</td>
+				<td><input type ="date" /></td>
 			</tr>
 			<tr>
 				<td>Color</td>
-				<td><form:radiobutton path="colour" id="colour" /></td>
+				<td><form:radiobuttons path="colour" /></td>
 			</tr>
 			<tr>
+			<td>
+			Manufacturer
+			</td>>
 				<td>
 					<%
-					List<Manufacturer> manufacturers = (List<Manufacturer>) session.getAttribute("manufacturers");
+					List<Manufacturer> manufacturers = (List<Manufacturer>) request.getAttribute("manufacturers");
 					%> <%
  if (null != manufacturers) {
  %><select name="manufacturerId" required>
@@ -73,15 +81,14 @@ Dealer dealer = null;
 			</tr>
 
 			<tr>
-				<td><a href="assignDealer"> <input type="button"
-						value="assignDealer">
-				</a></td>
+				
+				<td>Dealer</td>>
 				<td>
 					<%
-					List<Dealer> dealers = (List<Dealer>) session.getAttribute("dealers");
+					List<Dealer> dealers = (List<Dealer>) request.getAttribute("dealers");
 					%> <%
  if (null != dealers) {
- %><select name="dealerId" required>
+ %>               <select name="dealerId" required>
 						<%
 						for (int index = 0; index < dealers.size(); index++) {
 						%>
@@ -104,11 +111,10 @@ Dealer dealer = null;
 			</tr>
 		</table>
 	</form:form>
-
+	
 	<div>
-		<h2>Created Product</h2>
 		<%
-		Product product = (Product) session.getAttribute("product");
+		Product product = (Product) request.getAttribute("product");
 		%>
 		<%
 		if (null != product) {

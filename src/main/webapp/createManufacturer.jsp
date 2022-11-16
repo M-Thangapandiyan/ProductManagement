@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,19 +11,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="InsertManufacturer">
+	<form:from method="post" action="InsertManufacturer" modelAttribute="references">
 	<table>
+	
 		<tr>
 			<td>Brand</td>
-			<td><input type="text" name="brand"></td>
+			<td><form:input type="text" path="brand" /></td>
 		</tr>
 		<tr>
 			<td>Place</td>
-			<td><input type="text" name="place"></td>
+			<td><form:input type="text" path ="place" /></td>
 		</tr>
 		<tr>
 			<td><button type="submit">Submit</td>
 		</tr>
-	</form>
+		</table>
+		</form:from>
 </body>
 </html>
