@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%
-	List<Product> products = (List<Product>) session.getAttribute("products");
+	List<Product> products = (List<Product>) request.getAttribute("products");
 	%>
 	<%
 	if (null != products) {

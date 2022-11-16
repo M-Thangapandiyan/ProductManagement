@@ -15,19 +15,5 @@
 			</tr>
 		</table>
 	</form>
-	<%
-	if (null != session.getAttribute("isDeleted")) {
-	%>
-	<%
-	boolean isDeleted = (boolean) session.getAttribute("isDeleted");
-	%>
-	<%
-	if (isDeleted) {
-	%>
-	<%=" Product is deleted "%>
-	<%
-	}
-	}
-	%>
 </body>
 </html>

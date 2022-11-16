@@ -29,10 +29,10 @@
 		</table>
 	</form:form>
 	<%
-	Dealer dealer = (Dealer) request.getAttribute("reference");
+	if (null != request.getAttribute("reference") && !("updated successfully".equals(request.getAttribute("reference")))) {
 	%>
-	<%
-	if (null != dealer) {
+    <%
+	Dealer dealer = (Dealer) request.getAttribute("reference");
 	%>
 	<%="Created Successfully"%>
 	<table>

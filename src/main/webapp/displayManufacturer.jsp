@@ -19,7 +19,7 @@
 		</table>
 	</form>
 	<%
-	Manufacturer manufacturer = (Manufacturer) session.getAttribute("manufacturer");
+	Manufacturer manufacturer = (Manufacturer) request.getAttribute("manufacturer");
 	%>
 	<%
 	if (null != manufacturer) {

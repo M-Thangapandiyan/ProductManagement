@@ -15,18 +15,5 @@
 			</tr>
 		</table>
 	</form>
-	<%
-	if (null != session.getAttribute("isDeleted")) {
-	%>
-	<%
-	boolean isDeleted = (boolean) session.getAttribute("isDeleted");
-	%>
-	<%
-	if (isDeleted) {
-	%>
-	<%=" Manufacturer is deleted "%>
-	<%
-	}
-	}
-	%>
 </body>
+</html>>

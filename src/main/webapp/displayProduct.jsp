@@ -19,7 +19,7 @@
 		</table>
 	</form>
 	<%
-	Product product = (Product) session.getAttribute("product");
+	Product product = (Product) request.getAttribute("product");
 	%>
 	<%
 	if (null != product) {

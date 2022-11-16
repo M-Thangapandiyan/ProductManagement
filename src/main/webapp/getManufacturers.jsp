@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%
-	List<Manufacturer> manufacturers = (List<Manufacturer>) session.getAttribute("manufacturers");
+	List<Manufacturer> manufacturers = (List<Manufacturer>) request.getAttribute("manufacturers");
 	%>
 	<%
 	if (null != manufacturers) {

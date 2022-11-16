@@ -13,7 +13,7 @@
 <body>
 <ol>
 	<div class="container">
-			    <li><a href="createProduct.jsp"><button
+			    <li><a href="createProduct"><button
 							class="btn btn-success btn-sm">Create</button></a><br></li><hr>
 							
 				    <li><a href="getProducts"><button
