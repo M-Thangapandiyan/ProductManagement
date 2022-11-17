@@ -112,7 +112,7 @@ Dealer dealer = null;
 		</table>
 	</form:form>
 	
-	<div>
+	<div> 
 		<%
 		Product product = (Product) request.getAttribute("product");
 		%>

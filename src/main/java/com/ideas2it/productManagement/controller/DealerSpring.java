@@ -19,6 +19,8 @@ import com.ideas2it.productManagement.util.exception.ProductManagementException;
 @Controller
 public class DealerSpring {
 
+	DealerServiceImpl dealerServiceImpl = new DealerServiceImpl();
+	
 	@RequestMapping("/createDealer")
 	public String create(Model model) {
 		model.addAttribute("references", new Dealer());
@@ -29,7 +31,7 @@ public class DealerSpring {
 	public String createDealer(@ModelAttribute("references") Dealer dealer, Model model) {
 		try {
 			if (0 != dealer.getId()) {
-				if (new DealerServiceImpl().updateDealerById(dealer)) {
+				if (dealerServiceImpl .updateDealerById(dealer)) {
 					model.addAttribute("reference", "updated successfully");
 				}
 			} else {
@@ -41,11 +43,11 @@ public class DealerSpring {
 		return "createDealer";
 	}
 
-	@RequestMapping( value = "/deleteDealer", method = RequestMethod.POST)
-	public String deleteDealer(@RequestParam(value = "id", required = false) Integer id, Model model) {
+	@RequestMapping("/deleteDealer")
+	public String deleteManufacturer(@RequestParam(value = "id", required = false) Integer id, Model model) {
 		try {
 			if (null != id) {
-				if (new DealerServiceImpl().removeDealerById(id))
+				if (dealerServiceImpl.removeDealerById(id))
 					model.addAttribute("found", "deleted successfully");
 			}
 		} catch (ProductManagementException e) {
@@ -54,29 +56,32 @@ public class DealerSpring {
 		}
 		return "deleteDealer";
 	}
+	
+	
+	
 
 	@RequestMapping("/getDealers")
 	public String displayDealer(Model model) {
 		try {
-			model.addAttribute("dealers", new DealerServiceImpl().getDealers());
+			model.addAttribute("dealers", dealerServiceImpl .getDealers());
 		} catch (ProductManagementException e) {
 			e.printStackTrace();
 		}
 		return "getDealers";
 	}
 
-	@RequestMapping(value = { "/displayDealer", "/getDealer" })
+	@RequestMapping(value = { "/displayDealer", "/updateDealer" })
 	public String displayDealerById(@RequestParam(value = "id", required = false) Integer id, Model model,
 			HttpServletRequest request) {
 		String action = request.getServletPath();
 		try {
 			if (null != id) {
-				model.addAttribute("references", new DealerServiceImpl().getDealerById(id));
+				model.addAttribute("references", dealerServiceImpl.getDealerById(id));
 			}
 		} catch (ProductManagementException e) {
 			e.printStackTrace();
 		}
-		if (action.equals("/getDealer")) {
+		if (action.equals("/updateDealer")) {
 			return "createDealer";
 
 		} else {

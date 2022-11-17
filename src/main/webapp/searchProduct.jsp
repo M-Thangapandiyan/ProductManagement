@@ -10,7 +10,7 @@
 </head>
 <body>
 <form method="get" action="searchProduct">
-		Enter the product name: <input type="text" name="name">
+		Enter the product name: <input type="text" name = "letter">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>
@@ -18,7 +18,7 @@
 		</table>
 	</form>
 		<%
-	List<Product> products = (List<Product>) session.getAttribute("products");
+	List<Product> products = (List<Product>) request.getAttribute("search");
 	%>
 	<%
 	if (null != products) {

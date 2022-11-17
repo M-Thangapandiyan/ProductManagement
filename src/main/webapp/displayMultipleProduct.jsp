@@ -15,13 +15,14 @@ id = Integer.parseInt(request.getParameter("id"));
 <%
 }
 %>
+<%String[] ids = new String[id]; %>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Product Get By Id's</title>
+<title> displayMultipleIds</title>
 </head>
 <body>
-	<form method="get" action="dispalyMultipleProduct">
+	<form method="get" action="displayMultipleProduct">
 		<input name="choice" value="<%=id%>" readonly>
 		<%
 		for (int index = 0; index < id; index++) {
@@ -29,7 +30,7 @@ id = Integer.parseInt(request.getParameter("id"));
 		<table>
 			<tr>
 				Enter the productId:
-				<input type= "number" name="id-<%= index + 1 %>">
+				<input type="number" name="ids" value="<%=ids[index]%>">
 			</tr>
 		</table>
 		<%
@@ -37,12 +38,12 @@ id = Integer.parseInt(request.getParameter("id"));
 		%>
 		<table>
 			<tr>
-				<td><button type="submit">Submit</td>
+				<td><button type="submit">Submit</button> </td>
 			</tr>
 		</table>
 	</form>
 	<%
-	List<Product> products = (List<Product>) session.getAttribute("products");
+	List<Product> products = (List<Product>) request.getAttribute("reference");
 	%>
 	<%
 	if (null != products) {
@@ -81,9 +82,8 @@ id = Integer.parseInt(request.getParameter("id"));
 			<td><%=product.getLifeTime(product.getDate())%></td>
 		</tr>
 	</table>
-	<%
-	}
-	}
-	%>
+	<% }
+	
+	} %>
 </body>
 </html>

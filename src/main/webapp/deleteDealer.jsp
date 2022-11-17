@@ -11,10 +11,10 @@
 </head>
 <body>
 	<form method="post" action="deleteDealer">
-		Enter the productId: <input type="number" name="id">
+			 <input type="number" name="id" placeholder = "Enter the DealerId: ">
 		<table>
 			<tr>
-				<td><button type="submit">Submit</td>
+				<td><button type="submit">submit </button> </td>
 			</tr>
 		</table>
 	</form>

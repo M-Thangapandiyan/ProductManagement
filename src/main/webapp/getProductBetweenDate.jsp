@@ -25,7 +25,7 @@
 		</table>
 	</form>
 	<%
-	List<Product> products = (List<Product>) session.getAttribute("products");
+	List<Product> products = (List<Product>) request.getAttribute("reference");
 	%>
 	<%
 	if (null != products) {

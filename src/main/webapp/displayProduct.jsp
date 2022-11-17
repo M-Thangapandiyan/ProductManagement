@@ -19,7 +19,7 @@
 		</table>
 	</form>
 	<%
-	Product product = (Product) request.getAttribute("product");
+	Product product = (Product) request.getAttribute("references");
 	%>
 	<%
 	if (null != product) {

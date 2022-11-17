@@ -19,16 +19,16 @@
 				    <li><a href="getProducts"><button
 							class="btn btn-success btn-sm">All Products</button></a><br></li><hr>
 			
-				<li><a href="displayProduct.jsp"><button
+				<li><a href="displayProduct"><button
 							class="btn btn-success btn-sm">Product Details</button></a><br></li><hr>
 							
-				<li><a href="deleteProduct.jsp"><button
+				<li><a href="deleteProduct"><button
 							class="btn btn-success btn-sm">Delete </button></a><br></li><hr>
 			
 				<li><a href="updateProduct.jsp"><button
 							class="btn btn-success btn-sm">Update </button></a><br></li><hr>
 		
-				<li><a href="searchProduct.jsp"><button
+				<li><a href="searchProduct"><button
 							class="btn btn-success btn-sm">Search</button></a> <br></li><hr>
 					
 				<li><a href="getProductBetweenDate.jsp"><button
@@ -36,9 +36,6 @@
 				
 				<li><a href="getChoice.jsp"><button
 							class="btn btn-success btn-sm">Multiple Product</button></a></li><hr>
-										
-	<%List<Product> products = (List<Product>) session.getAttribute("products");%>
-	<%= products %>
 	</div>
 	</ol>
 </body>

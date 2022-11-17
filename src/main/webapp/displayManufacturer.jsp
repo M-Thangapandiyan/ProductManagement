@@ -10,8 +10,8 @@
 <title>ManufacturerById</title>
 </head>
 <body>
-	<form method="post" action="getManufacturer">
-		Enter the manufacturerId: <input type="number" name="id">
+	<form method="post" action="displayManufacturer">
+		<input type="number" name="id" placeholder = "Enter the ManufacturerId: ">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</button></td>
@@ -19,7 +19,7 @@
 		</table>
 	</form>
 	<%
-	Manufacturer manufacturer = (Manufacturer) request.getAttribute("manufacturer");
+	Manufacturer manufacturer = (Manufacturer) request.getAttribute("references");
 	%>
 	<%
 	if (null != manufacturer) {

@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get" action="getManufacturer">
-		Enter the update manufacturer id: <input type="number" name="id">
+	<form method="get" action="updateManufacturer">
+		 <input type="number" name="id" placeholder = "Enter the update manufacturer id:">
 		<table>
 			<tr>
 				<td><button type="submit">Submit</td>
@@ -17,7 +17,7 @@
 		</table>
 	</form>
 	<%
-	Manufacturer manufacturer = (Manufacturer) session.getAttribute("manufacturer");
+	Manufacturer manufacturer = (Manufacturer) request.getAttribute("manufacturer");
 	%>
 	<form method="get" action="updateManufacturer">
 		<table>

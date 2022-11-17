@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get" action="getDealer">
+	<form method="get" action="updateDealer">
 		<input type="number" name="id" placeholder = "Enter the dealerId: ">
 		<table>
 			<tr>

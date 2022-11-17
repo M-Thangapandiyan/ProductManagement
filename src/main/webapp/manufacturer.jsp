@@ -7,12 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get" action="getManufacturers">
-		<a href="createManufacturer.jsp">Create</a><br> <a
-			href="getManufacturers">Show All Manufacturers</a><br> <a
-			href="displayManufacturer.jsp">Show Manufacturer</a><br> <a
-			href="deleteManufacturer.jsp">Delete </a><br>
-		<a href="updateManufacturer.jsp">Update </a><br>
-	</form>
+
+	<a href="createManufacturer"> Create</a>
+	<br>
+	<a href="getManufacturers"> Show All Manufacturers</a>
+	<br>
+	<a href="displayManufacturer"> Show </a>
+	<br>
+	<a href="deleteManufacturer"> Delete </a>
+	<br>
+	<a href="updateManufacturer.jsp"> Update </a>
+	<br>
+
 </body>
 </html>

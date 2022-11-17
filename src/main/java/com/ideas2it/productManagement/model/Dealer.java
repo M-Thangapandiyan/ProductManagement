@@ -14,8 +14,7 @@ public class Dealer extends BaseModel {
 	@Column(name = "location", columnDefinition = "varchar(255)")
     private String location;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy =  "dealer")
-    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy =  "dealer")  
     private List<Product> products;
   
     public Dealer(){}

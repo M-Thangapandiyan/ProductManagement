@@ -411,7 +411,7 @@ public class ProductController {
 	}
 
 	/**
-	 * This methos used to get a product details by given user product id
+	 * This methods used to get a product details by given user product id
 	 */
 	public void getProductById() {
 		try {

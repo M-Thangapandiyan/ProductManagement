@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get" action="getProduct">
+	<form method="get" action="updateProduct">
 		Enter the update product id: <input type="number" name="id">
 		<table>
 			<tr>
