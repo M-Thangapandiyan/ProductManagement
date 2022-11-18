@@ -46,7 +46,7 @@ Dealer dealer = null;
 			</tr>
 			<tr>
 				<td>DateOfBirth</td>
-				<td><input type ="date" /></td>
+				<td><input type ="date" name = "dateManufacture"></td>
 			</tr>
 			<tr>
 				<td>Color</td>
@@ -60,8 +60,8 @@ Dealer dealer = null;
 					<%
 					List<Manufacturer> manufacturers = (List<Manufacturer>) request.getAttribute("manufacturers");
 					%> <%
- if (null != manufacturers) {
- %><select name="manufacturerId" required>
+                    if (null != manufacturers) {
+                    %><select name="manufacturerId" required>
 						<%
 						for (int index = 0; index < manufacturers.size(); index++) {
 						%>
@@ -114,7 +114,7 @@ Dealer dealer = null;
 	
 	<div> 
 		<%
-		Product product = (Product) request.getAttribute("product");
+		Product product = (Product) request.getAttribute("reference");
 		%>
 		<%
 		if (null != product) {

@@ -16,7 +16,7 @@
 			    <li><a href="createProduct"><button
 							class="btn btn-success btn-sm">Create</button></a><br></li><hr>
 							
-				    <li><a href="getProducts"><button
+				<li><a href="getProducts"><button
 							class="btn btn-success btn-sm">All Products</button></a><br></li><hr>
 			
 				<li><a href="displayProduct"><button

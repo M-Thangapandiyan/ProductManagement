@@ -1,8 +1,5 @@
 package com.ideas2it.productManagement.controller;
 
-import java.util.Date;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
+import com.ideas2it.productManagement.model.Dealer;
 import com.ideas2it.productManagement.model.Product;
 import com.ideas2it.productManagement.service.DealerService;
 import com.ideas2it.productManagement.service.ManufacturerService;
@@ -21,13 +19,27 @@ import com.ideas2it.productManagement.service.impl.ManufacturerServiceImpl;
 import com.ideas2it.productManagement.service.impl.ProductServiceImpl;
 import com.ideas2it.productManagement.util.DateUtil;
 import com.ideas2it.productManagement.util.exception.ProductManagementException;
-import com.ideas2it.productManagement.util.logger.ProductManagementLogger;
 
 @Controller
 public class ProductSpring {
 	ManufacturerService manufacturerService = new ManufacturerServiceImpl();
 	DealerService dealerService = new DealerServiceImpl();
 	ProductServiceImpl productServiceImpl = new ProductServiceImpl();
+
+	/*
+	 * @RequestMapping("/createProduct") public String create(Model model) {
+	 * model.addAttribute("references", new Product()); return "createProduct"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/InsertProduct", method = RequestMethod.POST) public
+	 * String createProduct(@ModelAttribute("references") Product product, Model
+	 * model) { try { model.addAttribute("reference",
+	 * productServiceImpl.createProduct(product));
+	 * 
+	 * } catch (ProductManagementException e) { e.printStackTrace(); } return
+	 * "createProduct"; }
+	 */
 
 	@RequestMapping("/createProduct")
 	public String create(Model model) {
@@ -42,18 +54,35 @@ public class ProductSpring {
 	}
 
 	@RequestMapping(value = "/InsertProduct", method = RequestMethod.POST)
-	public String createDealer(@ModelAttribute("references") Product product, @RequestParam int manufacturerId,
-			@RequestParam(value = "date", required = false) String date, @RequestParam int dealerId, Model model) {
+	public String createDealer(@ModelAttribute("references") Product product,
+			@RequestParam(value = "manufacturerId", required = false) Integer manufacturerId,
+
+			@RequestParam(value = "date", required = false) String date,
+
+			@RequestParam(value = "dealerId", required = false) Integer dealerId, Model model) {
 		try {
+
+			System.out.println(product);
 			if (null != date)
 				product.setDateOfManufacture(DateUtil.getDate(date));
-			product.setDealer(dealerService.getDealerById(dealerId));
-			product.setManufacturer(manufacturerService.getManufacturerById(manufacturerId));
-			model.addAttribute("product", productServiceImpl.createProduct(product));
+			if (null != manufacturerId && null != dealerId) {
+				product.setDealer(dealerService.getDealerById(dealerId));
+				product.setManufacturer(manufacturerService.getManufacturerById(manufacturerId));
+			}
+			if (0 != product.getId()) {
+				if (productServiceImpl.updateProductById(product)) {
+					model.addAttribute("reference", "updated successfully");
+				}
+			} else
+
+			{
+				model.addAttribute("reference", productServiceImpl.createProduct(product));
+			}
+			return "createProduct";
 		} catch (ProductManagementException e) {
 			e.printStackTrace();
 		}
-		return "createProduct";
+		return null;
 	}
 
 	@RequestMapping("/getProducts")
@@ -126,7 +155,7 @@ public class ProductSpring {
 	}
 
 	@RequestMapping("/displayMultipleProduct")
-	public String displayMultiple (WebRequest webRequest, Model model) {
+	public String displayMultiple(WebRequest webRequest, Model model) {
 		String[] ids = webRequest.getParameterValues("ids");
 		try {
 			model.addAttribute("reference", productServiceImpl.getProductByIds(ids));

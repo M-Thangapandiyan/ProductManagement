@@ -29,7 +29,7 @@
 	<br>
 	<li><a href="dealer.jsp"><button class="btn btn-danger btn-sm">Dealer</button></a><br><hr></li>
 	</ol>
-	</div>>
+	</div>
 </body>
 </html>
 

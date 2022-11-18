@@ -48,6 +48,10 @@
 			<td>Name</td>
 			<td><%=product.getName()%></td>
 		</tr>
+		<tr>
+	        <td>Date</td>
+			<td><%=product.getDate()%></td>
+		</tr>
 
 		<tr>
 			<td>Price</td>
