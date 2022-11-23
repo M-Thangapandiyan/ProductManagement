@@ -35,14 +35,14 @@ public class DealerController {
 		return service.getDealerById(id);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deleteDealer/{id}")
 	public String deleteDealer(@PathVariable int id) {
 		return service.deleteDealer(id);
 	}
 
 	@PostMapping("/updateDealer/{id}")
 	public Dealer updateDealer(@RequestBody Dealer dealer, @PathVariable("id") int id) {
-		return service.update(dealer,id);
+		return service.updateDealer(dealer,id);
 
 	}
 }

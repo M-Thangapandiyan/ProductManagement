@@ -1,48 +1,25 @@
 package com.ideas2it.productmanagement.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.ideas2it.productmanagement.dao.DealerDao;
 import com.ideas2it.productmanagement.model.Dealer;
 
-@Service
-public class DealerService {
+public interface DealerService {
 
-	@Autowired
-	DealerDao repositery;
+	public Dealer saveDealer(Dealer dealer);
 
-	public Dealer saveDealer(Dealer dealer) {
-		return repositery.save(dealer);
-	}
+	public List<Dealer> getDealers();
 
-	public List<Dealer> getDealers() {
-		return repositery.findAll();
-	}
+	/**
+	 * It is used to get product details by Id
+	 *
+	 * @param dealerId - an dealer id to be checked
+	 * @return - true if the dealer id contain false if the dealer id contain
+	 */
+	public Dealer getDealerById(int id);
 
-	public Dealer getDealerById(int id) {
+	public String deleteDealer(int id);
 
-		return repositery.getById(id);
-	}
+	public Dealer updateDealer(Dealer dealer, int id);
 
-	public String deleteDealer(int id) {
-		/*
-		 * Dealer ed = repositery.findById(id).orElse(null); if(null != ed ) {
-		 * ed.setDeleted(true); } repositery.save(ed);
-		 * 
-		 */
-		Dealer ed = repositery.findById(id).orElse(null);
-		repositery.delete(ed);
-		return "removed" + id;
-	}
-
-	public Dealer update(Dealer dealer,int id) {
-		Dealer ed = repositery.findById(id).orElse(null);
-		if (null != ed) {
-		    ed.setCompany(dealer.getCompany());
-		    ed.setLocation(dealer.getLocation());
-		}    
-		return repositery.save(ed);
-	}
 }
