@@ -12,7 +12,10 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @SQLDelete(sql = "UPDATE Manufacturer SET is_deleted = true WHERE id=?", check = ResultCheckStyle.COUNT)
 @Where(clause = "is_deleted = false")
 @Entity
@@ -23,8 +26,8 @@ public class Manufacturer extends BaseModel {
 	private String place;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, mappedBy = "manufacturer")
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")
+
 	private List<Product> products;
 
 	public Manufacturer() {
@@ -58,5 +61,13 @@ public class Manufacturer extends BaseModel {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 
+	}
+
+	@Override
+	public String toString() {
+		return "Manufacturer [brand=" + brand + ", place=" + place + ", products=" + products + ", getId()=" + getId()
+				+ ", getCreatedAt()=" + getCreatedAt() + ", getUpdatedAt()=" + getUpdatedAt() + ", isDeleted()="
+				+ isDeleted() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 }

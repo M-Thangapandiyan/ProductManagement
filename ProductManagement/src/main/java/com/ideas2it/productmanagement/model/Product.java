@@ -15,10 +15,12 @@ import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ideas2it.productmanagement.util.DateUtil;
 import com.ideas2it.productmanagement.util.enumaration.Colour;
 
-@SQLDelete(sql = "UPDATE Manufacturer SET is_deleted = true WHERE id=?", check = ResultCheckStyle.COUNT)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@SQLDelete(sql = "UPDATE Product SET is_deleted = 1 WHERE id=?", check = ResultCheckStyle.COUNT)
 @Where(clause = "is_deleted = false")
 @Entity
 public class Product extends BaseModel {
@@ -40,11 +42,11 @@ public class Product extends BaseModel {
 	@Column(name = "date_of_manufacture")
 	private Date dateOfManufacture;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "manufacture_id", columnDefinition = "int")
 	private Manufacturer manufacturer;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "dealer_id", columnDefinition = "int")
 	private Dealer dealer;
 
@@ -89,14 +91,6 @@ public class Product extends BaseModel {
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	public void setDate(Date dateOfManufacture) {
-		this.dateOfManufacture = dateOfManufacture;
-	}
-
-	public Date getDate() {
-		return dateOfManufacture;
 	}
 
 	public Date getDateOfManufacture() {

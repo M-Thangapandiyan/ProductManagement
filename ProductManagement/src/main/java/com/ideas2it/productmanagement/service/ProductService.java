@@ -24,4 +24,5 @@ public interface ProductService {
 
 	public Product updateProduct(Product product, int id);
 
+	public List<Product> searchProduct(String name);
 }

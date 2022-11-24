@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
@@ -13,7 +14,10 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @SQLDelete(sql = "UPDATE Dealer SET is_deleted = true WHERE id=?", check = ResultCheckStyle.COUNT)
 @Where(clause = "is_deleted = false")
 @Entity
@@ -25,8 +29,7 @@ public class Dealer extends BaseModel {
 	private String location;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Product.class,cascade = CascadeType.ALL, mappedBy = "dealer")
-	
+	@OneToMany(targetEntity = Product.class,fetch = FetchType.LAZY, mappedBy = "dealer")
 	private List<Product> products;
 
 	public Dealer() {

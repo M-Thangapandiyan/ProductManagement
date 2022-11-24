@@ -13,6 +13,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 
+
 @MappedSuperclass
 public class BaseModel {
 	@Id
@@ -20,7 +21,7 @@ public class BaseModel {
     private int id;
 	
 	@CreationTimestamp
-	@Column(name = "created_at")
+	@Column(name = "created_at", updatable = false)
     private Date createdAt;
 	
 	@UpdateTimestamp

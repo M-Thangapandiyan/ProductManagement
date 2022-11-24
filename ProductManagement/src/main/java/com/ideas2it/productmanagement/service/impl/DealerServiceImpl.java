@@ -29,22 +29,18 @@ public class DealerServiceImpl implements DealerService {
 	}
 
 	public String deleteDealer(int id) {
-		/*
-		 * Dealer ed = repositery.findById(id).orElse(null); if(null != ed ) {
-		 * ed.setDeleted(true); } repositery.save(ed);
-		 * 
-		 */
-		Dealer ed = repositery.findById(id).orElse(null);
-		repositery.delete(ed);
+		
+		Dealer delete = repositery.findById(id).orElse(null);
+		repositery.delete(delete);
 		return "removed" + id;
 	}
 
 	public Dealer updateDealer(Dealer dealer,int id) {
-		Dealer ed = repositery.findById(id).orElse(null);
-		if (null != ed) {
-		    ed.setCompany(dealer.getCompany());
-		    ed.setLocation(dealer.getLocation());
+		Dealer dealr = repositery.findById(id).orElse(null);
+		if (null != dealr) {
+		    dealr.setCompany(dealer.getCompany());
+		    dealr.setLocation(dealer.getLocation());
 		}    
-		return repositery.save(ed);
+		return repositery.save(dealr);
 	}
 }
