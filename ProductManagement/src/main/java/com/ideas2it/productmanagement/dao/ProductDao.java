@@ -1,5 +1,6 @@
 package com.ideas2it.productmanagement.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +14,10 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	@Query("select count(id) from Product")
 	long countById(int id);
 
-	@Query("SELECT p FROM Product p WHERE CONCAT(p.name, ' ', p.colour) LIKE %:keyword%")
+	@Query("select p from Product p where p.name like %:keyword% or p.name like %:keyword% or p.colour like %:keyword%")
 	List<Product> searchProduct(@Param("keyword") String value);
 
+	List<Product> findByDateOfManufactureBetween(Date startDate, Date endDate);
+
+	List<Product> findByIdIn(List<Integer> ids);
 }

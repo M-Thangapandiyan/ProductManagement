@@ -19,10 +19,14 @@ public interface ProductService {
 	 * @return - true if the Product id contain false if the Product id contain
 	 */
 	public Product getProductById(int id);
+	
+	public List<Product> getProductByIds(List<Integer> ids);
 
 	public String deleteProduct(int id);
 
 	public Product updateProduct(Product product, int id);
 
 	public List<Product> searchProduct(String name);
+	
+	public List<Product> findProduct(String startDate, String endDate);
 }

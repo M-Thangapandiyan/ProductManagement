@@ -19,8 +19,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ideas2it.productmanagement.util.DateUtil;
 import com.ideas2it.productmanagement.util.enumaration.Colour;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@SQLDelete(sql = "UPDATE Product SET is_deleted = 1 WHERE id=?", check = ResultCheckStyle.COUNT)
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@SQLDelete(sql = "UPDATE Product SET is_deleted = 1 WHERE id=?")
 @Where(clause = "is_deleted = false")
 @Entity
 public class Product extends BaseModel {

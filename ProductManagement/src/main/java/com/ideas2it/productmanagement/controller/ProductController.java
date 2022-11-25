@@ -1,5 +1,7 @@
 package com.ideas2it.productmanagement.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,6 @@ public class ProductController {
 
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody Product Product) {
-		System.out.println(Product);
 		return service.saveProduct(Product);
 	}
 
@@ -51,5 +52,20 @@ public class ProductController {
 	@GetMapping("/search/{value}")
 	public List<Product> searchProducts(@PathVariable("value") String value) {
 		return service.searchProduct(value);
+	}
+
+	@GetMapping("/getDate/{startDate}/{endDate}")
+	public List<Product> findProductBetweenDate(@PathVariable("startDate") String startDate,
+			@PathVariable("endDate") String endDate) {
+		return service.findProduct(startDate, endDate);
+	}
+
+	@GetMapping("/getproductByIds/{ids}")
+	public List<Product> getProducts(@PathVariable("ids") String id) {
+		List<Integer> ids = new ArrayList<>();
+        for (String a: Arrays.asList(id.split(","))) {
+        	ids.add(Integer.parseInt(a));
+        }
+		return service.getProductByIds(ids);
 	}
 }

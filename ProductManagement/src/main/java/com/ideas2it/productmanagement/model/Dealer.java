@@ -64,5 +64,4 @@ public class Dealer extends BaseModel {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-
 }
