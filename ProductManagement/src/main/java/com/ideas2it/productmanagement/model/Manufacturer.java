@@ -62,12 +62,4 @@ public class Manufacturer extends BaseModel {
 		this.products = products;
 
 	}
-
-	@Override
-	public String toString() {
-		return "Manufacturer [brand=" + brand + ", place=" + place + ", products=" + products + ", getId()=" + getId()
-				+ ", getCreatedAt()=" + getCreatedAt() + ", getUpdatedAt()=" + getUpdatedAt() + ", isDeleted()="
-				+ isDeleted() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
 }

@@ -15,6 +15,7 @@ import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ideas2it.productmanagement.util.DateUtil;
 import com.ideas2it.productmanagement.util.enumaration.Colour;
@@ -44,10 +45,12 @@ public class Product extends BaseModel {
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "manufacture_id", columnDefinition = "int")
+
 	private Manufacturer manufacturer;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "dealer_id", columnDefinition = "int")
+
 	private Dealer dealer;
 
 	public Product() {

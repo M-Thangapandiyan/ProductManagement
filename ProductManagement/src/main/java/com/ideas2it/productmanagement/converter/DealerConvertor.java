@@ -1,7 +1,9 @@
 package com.ideas2it.productmanagement.converter;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import com.ideas2it.productmanagement.dto.DealerDto;
@@ -11,21 +13,37 @@ import com.ideas2it.productmanagement.model.Dealer;
 public class DealerConvertor {
 
 	public DealerDto entityToDto(Dealer dealer) {
+		DealerDto dealerDto = new DealerDto();
+		dealerDto.setId(dealer.getId());
+		dealerDto.setCompany(dealer.getCompany());
+		dealerDto.setLocation(dealer.getLocation());
+		return dealerDto;
+	}
+	
+	public DealerDto entityToDto2 (Dealer dealer, int id) {
+		DealerDto dealerDto = new DealerDto();
+		dealerDto.setId(dealer.getId());
+		dealerDto.setCompany(dealer.getCompany());
+		dealerDto.setLocation(dealer.getLocation());
+		return dealerDto;
+	}
 
-		DealerDto s = new DealerDto();
-		s.getCompany();
-		s.getLocation();
+	public List<DealerDto> entityToDto1(List<Dealer> dealer) {
+
+		List<DealerDto> s = new ArrayList<DealerDto>();
+		for (Dealer d : dealer) {
+			s.add(entityToDto(d));
+		}
 		return s;
 	}
-	
-	public List<DealerDto> entityToDto1 (Dealer dealer) {
-		return dealer.stream().map(d ->entityToDto(d).collect(Collectors.toList) );
-	}
-	
-	public Dealer dtoToEntity(DealerDto s) {
-		Dealer d = new Dealer();
-		d.setCompany(s.getCompany());
-		d.setLocation(s.getLocation());
-		return d;
+
+	public Dealer dtoToEntity(DealerDto dealerDto) {
+		Dealer dealer = new Dealer();	
+		dealer.setCompany(dealerDto.getCompany());
+		dealer.setLocation(dealerDto.getLocation());
+		return dealer;
+
+		
+
 	}
 }

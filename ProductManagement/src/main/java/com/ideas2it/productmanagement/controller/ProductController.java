@@ -5,16 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.ideas2it.productmanagement.converter.ProductConvertor;
+import com.ideas2it.productmanagement.dto.ProductDto;
 import com.ideas2it.productmanagement.model.Product;
 import com.ideas2it.productmanagement.service.ProductService;
 
@@ -24,19 +23,25 @@ public class ProductController {
 	@Autowired
 	ProductService service;
 
+	@Autowired
+	ProductConvertor convertor;
+
 	@PostMapping("/addProduct")
-	public Product addProduct(@RequestBody Product Product) {
-		return service.saveProduct(Product);
+	public ProductDto addProduct(@RequestBody ProductDto productDto) {
+		Product product = service.saveProduct(convertor.dtoToEntity(productDto));
+		return convertor.entityToDto(product);
 	}
 
 	@GetMapping("/getProducts")
-	public List<Product> findAllProduct() {
-		return service.getProducts();
+	public List<ProductDto> findAllProduct() {
+		List<Product> product = service.getProducts();
+		return convertor.entityDto1(product);
 	}
 
 	@GetMapping("/getProduct/{id}")
-	public Product findProduct(@PathVariable("id") int id) {
-		return service.getProductById(id);
+	public ProductDto findProduct(@PathVariable("id") int id) {
+		Product product = service.getProductById(id);
+		return convertor.entityToDto(product);
 	}
 
 	@DeleteMapping("/deleteProduct/{id}")
@@ -45,27 +50,31 @@ public class ProductController {
 	}
 
 	@PutMapping("/updateProduct/{id}")
-	public Product updateProduct(@RequestBody Product Product, @PathVariable("id") int id) {
-		return service.updateProduct(Product, id);
+	public ProductDto updateProduct(@RequestBody ProductDto productDto, @PathVariable("id") int id) {
+		Product product = service.updateProduct(convertor.dtoToEntity(productDto), id);
+		return convertor.entityToDto(product);
 	}
 
-	@GetMapping("/search/{value}")
-	public List<Product> searchProducts(@PathVariable("value") String value) {
-		return service.searchProduct(value);
+	@GetMapping("/searchProduct/{value}")
+	public List<ProductDto> searchProducts(@PathVariable("value") String value) {
+		List<Product> products = service.searchProduct(value);
+		return convertor.entityDto1(products);
 	}
 
-	@GetMapping("/getDate/{startDate}/{endDate}")
-	public List<Product> findProductBetweenDate(@PathVariable("startDate") String startDate,
+	@GetMapping("/getDateBeetweenProduct/{startDate}/{endDate}")
+	public List<ProductDto> findProductBetweenDate(@PathVariable("startDate") String startDate,
 			@PathVariable("endDate") String endDate) {
-		return service.findProduct(startDate, endDate);
+		List<Product> products = service.findProduct(startDate, endDate);
+		return convertor.entityDto1(products);
 	}
 
 	@GetMapping("/getproductByIds/{ids}")
-	public List<Product> getProducts(@PathVariable("ids") String id) {
+	public List<ProductDto> getProducts(@PathVariable("ids") String id) {
 		List<Integer> ids = new ArrayList<>();
-        for (String a: Arrays.asList(id.split(","))) {
-        	ids.add(Integer.parseInt(a));
-        }
-		return service.getProductByIds(ids);
+		for (String array : Arrays.asList(id.split(","))) {
+			ids.add(Integer.parseInt(array));
+		}
+		List<Product> products = service.getProductByIds(ids);
+		return convertor.entityDto1(products);
 	}
 }

@@ -16,8 +16,7 @@ import org.hibernate.annotations.Where;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @SQLDelete(sql = "UPDATE Dealer SET is_deleted = true WHERE id=?", check = ResultCheckStyle.COUNT)
 @Where(clause = "is_deleted = false")
 @Entity
@@ -29,11 +28,16 @@ public class Dealer extends BaseModel {
 	private String location;
 
 	@JsonIgnore
-	@OneToMany(targetEntity = Product.class,fetch = FetchType.LAZY, mappedBy = "dealer")
+	@OneToMany(targetEntity = Product.class, fetch = FetchType.LAZY, mappedBy = "dealer")
 	private List<Product> products;
 
 	public Dealer() {
 
+	}
+
+	@Override
+	public String toString() {
+		return "Dealer [company=" + company + ", location=" + location + ", products=" + products + "]";
 	}
 
 	public Dealer(String company, String location) {

@@ -36,8 +36,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 	public Manufacturer updateManufacturer(Manufacturer manufacturer, int id) {
 		Manufacturer manufacturer1 = repositery.findById(id).orElse(null);
 		if (null != manufacturer1) {
-			manufacturer1.setBrand(manufacturer1.getBrand());
-			manufacturer1.setPlace(manufacturer1.getPlace());
+			manufacturer1.setBrand(manufacturer.getBrand());
+			manufacturer1.setPlace(manufacturer.getPlace());
 		}
 		return repositery.save(manufacturer1);
 	}

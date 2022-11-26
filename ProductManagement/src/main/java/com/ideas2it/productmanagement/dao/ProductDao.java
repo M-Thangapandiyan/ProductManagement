@@ -14,7 +14,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 	@Query("select count(id) from Product")
 	long countById(int id);
 
-	@Query("select p from Product p where p.name like %:keyword% or p.name like %:keyword% or p.colour like %:keyword%")
+	@Query("select p from Product p where p.name like %:keyword% or p.colour like %:keyword%")
 	List<Product> searchProduct(@Param("keyword") String value);
 
 	List<Product> findByDateOfManufactureBetween(Date startDate, Date endDate);

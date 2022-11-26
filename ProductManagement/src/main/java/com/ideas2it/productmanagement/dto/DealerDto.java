@@ -1,13 +1,12 @@
 package com.ideas2it.productmanagement.dto;
 
+import com.ideas2it.productmanagement.model.Dealer;
+
 public class DealerDto {
 
+	private int id;
 	private String company;
 	private String location;
-
-	/*
-	 * public DealerDto() { this.company = company; this.location = location; }
-	 */
 
 	public String getCompany() {
 		return company;
@@ -23,5 +22,13 @@ public class DealerDto {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
