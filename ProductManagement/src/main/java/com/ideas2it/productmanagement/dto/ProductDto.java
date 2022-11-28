@@ -2,21 +2,42 @@ package com.ideas2it.productmanagement.dto;
 
 import java.util.Date;
 
-import com.ideas2it.productmanagement.model.Dealer;
-import com.ideas2it.productmanagement.model.Manufacturer;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import com.ideas2it.productmanagement.util.enumaration.Colour;
 
 public class ProductDto {
 
 	private int id;
 	private String code;
+	
+	@NotNull(message = "name should not be null")
+	@NotBlank
 	private String name;
+	
+	@NotNull(message = "colour should not be null")
+	@NotBlank
 	private Colour colour;
+	
+	@Min(100)
+	@Max(100000)
+	@NotNull(message = "price should not be 0 and minimum price 100 to maximum price 100000")
+	@NotBlank
 	private int price;
+	
+	@NotNull(message = "dateOfManufacturer should not be null")
+	@NotBlank
 	private Date dateOfmanufacture;
 	
+	@NotNull(message = "dealer should not be null")
+	@NotBlank
 	private DealerDto dealer;
 	
+	@NotNull(message = "manufacturer should not be null")
+	@NotBlank
 	private ManufacturerDto manufacturer;
 
 	public String getName() {

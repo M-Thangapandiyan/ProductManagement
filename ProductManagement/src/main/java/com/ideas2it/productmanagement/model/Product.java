@@ -7,15 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ResultCheckStyle;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ideas2it.productmanagement.util.DateUtil;
 import com.ideas2it.productmanagement.util.enumaration.Colour;
@@ -45,13 +42,14 @@ public class Product extends BaseModel {
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "manufacture_id", columnDefinition = "int")
-
 	private Manufacturer manufacturer;
 
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "dealer_id", columnDefinition = "int")
-
 	private Dealer dealer;
+
+	private String username;
+	private String password;
 
 	public Product() {
 	}
@@ -122,5 +120,21 @@ public class Product extends BaseModel {
 
 	public void setDealer(Dealer dealer) {
 		this.dealer = dealer;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

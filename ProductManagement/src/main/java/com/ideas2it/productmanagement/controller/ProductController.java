@@ -16,6 +16,7 @@ import com.ideas2it.productmanagement.converter.ProductConvertor;
 import com.ideas2it.productmanagement.dto.ProductDto;
 import com.ideas2it.productmanagement.model.Product;
 import com.ideas2it.productmanagement.service.ProductService;
+import com.ideas2it.productmanagement.util.customexception.ProductNotFoundException;
 
 @RestController
 public class ProductController {
@@ -25,38 +26,44 @@ public class ProductController {
 
 	@Autowired
 	ProductConvertor convertor;
+	
+	@GetMapping("/")
+	public String demo() {
+		return "hi yaar";
+	}
 
 	@PostMapping("/addProduct")
-	public ProductDto addProduct(@RequestBody ProductDto productDto) {
+	public ProductDto addProduct(@RequestBody ProductDto productDto) throws ProductNotFoundException {
 		Product product = service.saveProduct(convertor.dtoToEntity(productDto));
 		return convertor.entityToDto(product);
 	}
 
 	@GetMapping("/getProducts")
-	public List<ProductDto> findAllProduct() {
+	public List<ProductDto> findAllProduct() throws ProductNotFoundException {
 		List<Product> product = service.getProducts();
 		return convertor.entityDto1(product);
 	}
 
 	@GetMapping("/getProduct/{id}")
-	public ProductDto findProduct(@PathVariable("id") int id) {
+	public ProductDto findProduct(@PathVariable("id") int id) throws ProductNotFoundException {
 		Product product = service.getProductById(id);
 		return convertor.entityToDto(product);
 	}
 
 	@DeleteMapping("/deleteProduct/{id}")
-	public String deleteProduct(@PathVariable int id) {
+	public String deleteProduct(@PathVariable int id) throws ProductNotFoundException {
 		return service.deleteProduct(id);
 	}
 
 	@PutMapping("/updateProduct/{id}")
-	public ProductDto updateProduct(@RequestBody ProductDto productDto, @PathVariable("id") int id) {
+	public ProductDto updateProduct(@RequestBody ProductDto productDto, @PathVariable("id") int id)
+			throws ProductNotFoundException {
 		Product product = service.updateProduct(convertor.dtoToEntity(productDto), id);
 		return convertor.entityToDto(product);
 	}
 
 	@GetMapping("/searchProduct/{value}")
-	public List<ProductDto> searchProducts(@PathVariable("value") String value) {
+	public List<ProductDto> searchProducts(@PathVariable("value") String value) throws ProductNotFoundException {
 		List<Product> products = service.searchProduct(value);
 		return convertor.entityDto1(products);
 	}
@@ -64,12 +71,18 @@ public class ProductController {
 	@GetMapping("/getDateBeetweenProduct/{startDate}/{endDate}")
 	public List<ProductDto> findProductBetweenDate(@PathVariable("startDate") String startDate,
 			@PathVariable("endDate") String endDate) {
-		List<Product> products = service.findProduct(startDate, endDate);
+		List<Product> products = null;
+		try {
+			products = service.findProductByDate(startDate, endDate);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		return convertor.entityDto1(products);
 	}
 
 	@GetMapping("/getproductByIds/{ids}")
-	public List<ProductDto> getProducts(@PathVariable("ids") String id) {
+	public List<ProductDto> getProducts(@PathVariable("ids") String id) throws ProductNotFoundException {
 		List<Integer> ids = new ArrayList<>();
 		for (String array : Arrays.asList(id.split(","))) {
 			ids.add(Integer.parseInt(array));
