@@ -3,15 +3,12 @@ package com.ideas2it.productmanagement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ideas2it.productmanagement.converter.DealerConvertor;
@@ -21,7 +18,6 @@ import com.ideas2it.productmanagement.service.DealerService;
 import com.ideas2it.productmanagement.util.customexception.ProductNotFoundException;
 
 @RestController
-@RequestMapping("/security")
 public class DealerController {
 
 	@Autowired
@@ -29,15 +25,9 @@ public class DealerController {
 
 	@Autowired
 	DealerConvertor convertor;
-	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
 
 	@PostMapping("/addDealer")
 	public DealerDto addDealer(@RequestBody DealerDto dealerDto) throws ProductNotFoundException {
-		String password = dealerDto.getPassword();
-		String encryptPassword = encoder.encode(password);
-		dealerDto.setPassword(encryptPassword);
 		Dealer dealer = service.saveDealer(convertor.dtoToEntity(dealerDto));
 		return convertor.entityToDto(dealer);
 	}
@@ -60,15 +50,9 @@ public class DealerController {
 	}
 
 	@PutMapping("/updateDealer/{id}")
-	public DealerDto updateDealer(@RequestBody DealerDto dealerDto, @PathVariable("id") int id) throws ProductNotFoundException {
+	public DealerDto updateDealer(@RequestBody DealerDto dealerDto, @PathVariable("id") int id)
+			throws ProductNotFoundException {
 		Dealer dealer = service.updateDealer(convertor.dtoToEntity(dealerDto), id);
 		return convertor.entityToDto(dealer);
 	}
 }
-
-
-
-
- 
- 
-

@@ -2,20 +2,20 @@ package com.ideas2it.productmanagement.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ideas2it.productmanagement.util.DateUtil;
 import com.ideas2it.productmanagement.util.enumaration.Colour;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @SQLDelete(sql = "UPDATE Product SET is_deleted = 1 WHERE id=?")

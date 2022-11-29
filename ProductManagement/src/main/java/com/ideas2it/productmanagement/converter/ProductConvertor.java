@@ -12,24 +12,25 @@ import com.ideas2it.productmanagement.model.Product;
 @Component
 public class ProductConvertor {
 
-	public ProductDto  entityToDto(Product product ) {
+	public ProductDto entityToDto(Product product) {
 		ModelMapper mapper = new ModelMapper();
-		ProductDto map = mapper.map(product, ProductDto.class);
-		return map;
+		ProductDto p = mapper.map(product, ProductDto.class);
+
+		return p;
 	}
-	
-	public List<ProductDto> entityDto1 (List<Product> product) {
+
+	public List<ProductDto> entityDto1(List<Product> product) {
 		List<ProductDto> s = new ArrayList<ProductDto>();
-		for(Product d : product) {
+		for (Product d : product) {
 			s.add(entityToDto(d));
 		}
 		return s;
 	}
-	
+
 	public Product dtoToEntity(ProductDto productDto) {
 		ModelMapper mapper = new ModelMapper();
-		Product product = mapper.map(productDto,Product.class);
+		Product product = mapper.map(productDto, Product.class);
 		return product;
-		
+
 	}
 }
